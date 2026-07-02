@@ -70,7 +70,7 @@
         .accent-sticker { position: absolute; width: 70px; z-index: 20; }
         .pos-top-right { top: -30px; right: 10px; }
 
-        /* Photo Gallery */
+        /* Photo Gallery for 21 Images */
         .carousel {
             display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
             gap: 15px; padding-bottom: 15px; margin-top: 15px; -webkit-overflow-scrolling: touch;
@@ -153,10 +153,27 @@
         <div class="card" style="padding: 15px 10px;">
             <div class="text-maroon">Swipe For Memories ✦</div>
             <div class="carousel">
-                <div class="photo-slot">Upload photo1.jpg</div>
-                <div class="photo-slot">Upload photo2.jpg</div>
-                <div class="photo-slot">Upload photo3.jpg</div>
-                <div class="photo-slot">Upload photo4.jpg</div>
+                <div class="photo-slot"><img src="photo1.jpg" alt="Memory 1"></div>
+                <div class="photo-slot"><img src="photo2.jpg" alt="Memory 2"></div>
+                <div class="photo-slot"><img src="photo3.jpg" alt="Memory 3"></div>
+                <div class="photo-slot"><img src="photo4.jpg" alt="Memory 4"></div>
+                <div class="photo-slot"><img src="photo5.jpg" alt="Memory 5"></div>
+                <div class="photo-slot"><img src="photo6.jpg" alt="Memory 6"></div>
+                <div class="photo-slot"><img src="photo7.jpg" alt="Memory 7"></div>
+                <div class="photo-slot"><img src="photo8.jpg" alt="Memory 8"></div>
+                <div class="photo-slot"><img src="photo9.jpg" alt="Memory 9"></div>
+                <div class="photo-slot"><img src="photo10.jpg" alt="Memory 10"></div>
+                <div class="photo-slot"><img src="photo11.jpg" alt="Memory 11"></div>
+                <div class="photo-slot"><img src="photo12.jpg" alt="Memory 12"></div>
+                <div class="photo-slot"><img src="photo13.jpg" alt="Memory 13"></div>
+                <div class="photo-slot"><img src="photo14.jpg" alt="Memory 14"></div>
+                <div class="photo-slot"><img src="photo15.jpg" alt="Memory 15"></div>
+                <div class="photo-slot"><img src="photo16.jpg" alt="Memory 16"></div>
+                <div class="photo-slot"><img src="photo17.jpg" alt="Memory 17"></div>
+                <div class="photo-slot"><img src="photo18.jpg" alt="Memory 18"></div>
+                <div class="photo-slot"><img src="photo19.jpg" alt="Memory 19"></div>
+                <div class="photo-slot"><img src="photo20.jpg" alt="Memory 20"></div>
+                <div class="photo-slot"><img src="photo21.jpg" alt="Memory 21"></div>
             </div>
         </div>
         <button class="btn" onclick="nextScreen(6)">Finish</button>
@@ -179,7 +196,7 @@
         document.getElementById(target).classList.add('active');
     }
 
-    // Emoji Rain (Added Balloons for Birthday Vibe)
+    // Emoji Rain Logic
     const emojis = ['🌸', '✨', '💕', '🎈'];
     const container = document.getElementById('app');
     setInterval(() => {
@@ -194,10 +211,12 @@
         }
     }, 400);
 
+    // Tic Tac Toe Logic
     let board = ['', '', '', '', '', '', '', '', ''];
     let currentPlayer = 'X';
     const boardEl = document.getElementById('board');
     let gameActive = true; let moves = 0;
+    
     function initGame() {
         boardEl.innerHTML = '';
         board.forEach((cell, i) => {
@@ -206,6 +225,7 @@
             div.onclick = () => makeMove(i); boardEl.appendChild(div);
         });
     }
+    
     function makeMove(i) {
         if(board[i] === '' && gameActive) {
             board[i] = currentPlayer; currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; moves++; initGame();
@@ -219,6 +239,7 @@
     }
     initGame();
 
+    // Troll Button Logic
     const treatBtn = document.getElementById('ttt-next');
     let escapes = 0;
     function moveButton(e) {
