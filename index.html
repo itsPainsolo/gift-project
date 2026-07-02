@@ -5,26 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>For My Sister</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Poppins:wght@400;600&family=Courier+Prime&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Poppins:wght@400;700;900&family=Courier+Prime&display=swap');
 
         body {
             margin: 0; padding: 0; 
-            /* Soft Pink Gradient Background */
             background: linear-gradient(135deg, #fdf4f6 0%, #fadadd 100%);
             display: flex; justify-content: center; align-items: center;
             height: 100vh; font-family: 'Poppins', sans-serif; overflow: hidden;
         }
         .app-container {
-            width: 100%; max-width: 400px;
-            height: 100vh; height: 100dvh;
-            background-color: transparent;
-            position: relative; overflow: hidden;
+            width: 100%; max-width: 400px; height: 100vh; height: 100dvh;
+            background-color: transparent; position: relative; overflow: hidden;
             box-shadow: 0 0 30px rgba(0,0,0,0.2);
         }
         .screen {
             display: none; width: 100%; height: 100%;
             flex-direction: column; align-items: center; justify-content: center;
-            padding: 30px 20px; box-sizing: border-box; text-align: center;
+            padding: 20px; box-sizing: border-box; text-align: center;
             animation: slideUp 0.6s cubic-bezier(0.25, 1, 0.5, 1);
             position: relative; z-index: 10;
         }
@@ -32,69 +29,68 @@
 
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         
-        .text-maroon { color: #8b2c2c; letter-spacing: 2px; font-size: 0.75em; text-transform: uppercase; font-weight: 600; margin-bottom: 10px; }
-        h1, h2, h3 { color: #d35400; margin: 10px 0; font-family: 'Playfair Display', serif; }
+        .text-maroon { color: #8b2c2c; letter-spacing: 2px; font-size: 0.75em; text-transform: uppercase; font-weight: 700; margin-bottom: 10px; }
+        h2, h3 { color: #d35400; margin: 10px 0; font-family: 'Playfair Display', serif; }
         p { color: #555; line-height: 1.6; font-size: 0.9em; }
         
         .card {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 25px 20px; border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(211, 84, 0, 0.1); width: 100%;
+            background: rgba(255, 255, 255, 0.95); padding: 25px 20px; border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(139, 44, 44, 0.1); width: 100%;
             box-sizing: border-box; position: relative;
         }
 
         .btn {
-            padding: 14px 35px; background-color: #d35400; color: #fff;
+            padding: 14px 35px; background-color: #8b2c2c; color: #fff;
             border: none; border-radius: 30px; font-family: 'Poppins', sans-serif;
-            font-weight: 600; font-size: 0.9em; cursor: pointer; margin-top: 25px;
-            box-shadow: 0 5px 15px rgba(211, 84, 0, 0.3); transition: transform 0.2s;
+            font-weight: 700; font-size: 0.9em; cursor: pointer; margin-top: 25px;
+            box-shadow: 0 5px 15px rgba(139, 44, 44, 0.3); transition: transform 0.2s;
             position: relative; z-index: 100;
         }
         .btn:active { transform: scale(0.95); }
         
+        /* EXACT Birthday Template Typography */
+        .bday-container { position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 10px; }
+        .bday-bg-text {
+            font-size: 3.8em; font-weight: 900; color: transparent;
+            -webkit-text-stroke: 1px rgba(139, 44, 44, 0.15); line-height: 0.85;
+            position: absolute; z-index: 1; text-transform: uppercase;
+        }
+        .bday-fg-text {
+            font-size: 3.2em; font-weight: 900; color: #7a2020;
+            z-index: 2; position: relative; text-transform: uppercase; line-height: 1;
+            margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        /* Instagram Style Icons */
+        .ig-icons { display: flex; gap: 15px; margin-top: 15px; font-size: 1.4em; color: #333; justify-content: flex-start; }
+        .ig-icons span:first-child { color: #e74c3c; } /* Red Heart */
+
         /* Graphics */
         .hero-sticker { width: 140px; margin-bottom: -15px; z-index: 15; position: relative; }
         .accent-sticker { position: absolute; width: 70px; z-index: 20; }
         .pos-top-right { top: -30px; right: 10px; }
-        .pos-bottom-left { bottom: -20px; left: -10px; }
 
-        /* Swipeable Photo Gallery */
+        /* Photo Gallery */
         .carousel {
             display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
-            gap: 15px; padding-bottom: 15px; margin-top: 15px;
-            -webkit-overflow-scrolling: touch;
+            gap: 15px; padding-bottom: 15px; margin-top: 15px; -webkit-overflow-scrolling: touch;
         }
         .carousel::-webkit-scrollbar { display: none; }
         .photo-slot {
             scroll-snap-align: center; flex: 0 0 90%; height: 350px;
             background-color: #f4f4f4; border-radius: 12px; border: 2px dashed #ccc;
-            display: flex; align-items: center; justify-content: center;
-            color: #999; font-size: 0.75em; overflow: hidden;
+            display: flex; align-items: center; justify-content: center; color: #999; font-size: 0.75em; overflow: hidden;
         }
         .photo-slot img { width: 100%; height: 100%; object-fit: cover; }
 
         /* Falling Emojis */
-        .falling-emoji {
-            position: absolute; top: -50px; font-size: 24px;
-            pointer-events: none; z-index: 1;
-            animation: fall linear forwards;
-        }
+        .falling-emoji { position: absolute; top: -50px; font-size: 24px; pointer-events: none; z-index: 1; animation: fall linear forwards; }
         @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
 
         /* Tic Tac Toe & Error */
-        .board { 
-            display: grid; grid-template-columns: repeat(3, 70px); grid-gap: 10px; 
-            margin: 25px auto; background: #fff; padding: 15px; border-radius: 15px;
-        }
-        .cell {
-            width: 70px; height: 70px; background-color: #fdf1f1;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 2em; color: #d35400; border-radius: 12px; font-family: 'Playfair Display', serif;
-        }
-        #s-error {
-            background-color: #0c0c0c; color: #ff3333; font-family: 'Courier Prime', monospace;
-            text-align: left; padding: 30px; justify-content: center; z-index: 999;
-        }
+        .board { display: grid; grid-template-columns: repeat(3, 70px); grid-gap: 10px; margin: 25px auto; background: #fff; padding: 15px; border-radius: 15px; }
+        .cell { width: 70px; height: 70px; background-color: #fdf1f1; display: flex; align-items: center; justify-content: center; font-size: 2em; color: #d35400; border-radius: 12px; font-family: 'Playfair Display', serif; }
+        #s-error { background-color: #0c0c0c; color: #ff3333; font-family: 'Courier Prime', monospace; text-align: left; padding: 30px; justify-content: center; z-index: 999; }
         .bypass-link { color: #555; text-decoration: underline; cursor: pointer; align-self: center; margin-top: 30px; }
     </style>
 </head>
@@ -103,16 +99,22 @@
 <div class="app-container" id="app">
 
     <div id="s1" class="screen active">
-        <h2 style="color: #8b2c2c; font-family: 'Poppins', sans-serif;">Heyy sis!</h2>
+        <h2 style="color: #7a2020; font-family: 'Poppins', sans-serif; font-weight: 900;">Heyy sis!</h2>
         <button class="btn" onclick="nextScreen(2)">Tap to Open</button>
     </div>
 
-    <div id="s2" class="screen">
-        <img src="bear-cake.png" class="hero-sticker" alt="Cake Sticker">
-        <div class="card">
-            <div class="text-maroon">✦ For My Lovely Sister ✦</div>
-            <h2>Happy Birthday</h2>
-            <p>You've always been my biggest supporter, my secret keeper, and my forever partner-in-crime.</p>
+    <div id="s2" class="screen" style="justify-content: flex-start; padding-top: 50px;">
+        <div class="bday-container">
+            <div class="bday-bg-text">BIRTHDAY<br>BIRTHDAY<br>BIRTHDAY<br>BIRTHDAY</div>
+            <div class="bday-fg-text">HAPPY<br>BIRTHDAY</div>
+        </div>
+        
+        <div class="card" style="margin-top: 30px; padding: 15px;">
+            <img src="bear-cake.png" style="width: 100%; border-radius: 8px; background: #fdf4f6;" alt="Cake Sticker Placeholder">
+            <div class="ig-icons">
+                <span>❤️</span> <span>💬</span> <span>✈️</span>
+            </div>
+            <p style="text-align: left; margin: 15px 0 0 0; font-size: 0.85em;"><b>Bhai</b> Wishing you a day filled with love, laughter, and all the things that bring you joy.</p>
         </div>
         <button class="btn" onclick="nextScreen(3)">Continue</button>
     </div>
@@ -120,7 +122,7 @@
     <div id="s3" class="screen">
         <div class="text-maroon">Win a chocolate ✦</div>
         <div class="board" id="board"></div>
-        <p id="ttt-msg" style="color: #27ae60; font-weight: 600; font-size: 0.85em; opacity: 0;"></p>
+        <p id="ttt-msg" style="color: #27ae60; font-weight: 700; font-size: 0.85em; opacity: 0;"></p>
         <button class="btn" id="ttt-next" style="display:none; transition: transform 0.1s; margin-top: 20px;">Claim Treat</button>
     </div>
 
@@ -140,7 +142,7 @@
         <div class="card">
             <img src="bear-reading.png" class="accent-sticker pos-top-right" alt="Small Sticker">
             <div class="text-maroon">A Letter From Your Bhai ✦</div>
-            <h2>Dear Sis 💖</h2>
+            <h2 style="color: #7a2020;">Dear Sis 💖</h2>
             <p>I just want to remind you how special you are to me. Even when I annoy you, you know I always have your back.</p>
         </div>
         <button class="btn" onclick="nextScreen(5)">Next</button>
@@ -164,36 +166,34 @@
         <img src="bear-blanket.png" class="hero-sticker" alt="Blanket Sticker">
         <div class="card">
             <div class="text-maroon">✦ From Your Bhai, With Love ✦</div>
-            <h2>Thank You</h2>
+            <h2 style="color: #7a2020;">Thank You</h2>
             <div class="text-maroon" style="font-size: 0.9em;">FOR ALWAYS BEING THERE ❤️</div>
         </div>
     </div>
 </div>
 
 <script>
-    // Screen Navigation
     function nextScreen(id) {
         document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
         let target = (id === 'error') ? 's-error' : 's' + id;
         document.getElementById(target).classList.add('active');
     }
 
-    // Emoji Rain Logic (Optimized for Mobile)
-    const emojis = ['🌸', '✨', '💕'];
+    // Emoji Rain (Added Balloons for Birthday Vibe)
+    const emojis = ['🌸', '✨', '💕', '🎈'];
     const container = document.getElementById('app');
     setInterval(() => {
-        if(document.querySelectorAll('.falling-emoji').length < 15) {
+        if(document.querySelectorAll('.falling-emoji').length < 18) {
             const el = document.createElement('div');
             el.className = 'falling-emoji';
             el.innerText = emojis[Math.floor(Math.random() * emojis.length)];
             el.style.left = Math.random() * 100 + 'vw';
-            el.style.animationDuration = (Math.random() * 3 + 4) + 's'; // 4s to 7s fall
+            el.style.animationDuration = (Math.random() * 3 + 4) + 's'; 
             container.appendChild(el);
             setTimeout(() => el.remove(), 7000);
         }
-    }, 500);
+    }, 400);
 
-    // Tic Tac Toe
     let board = ['', '', '', '', '', '', '', '', ''];
     let currentPlayer = 'X';
     const boardEl = document.getElementById('board');
@@ -219,7 +219,6 @@
     }
     initGame();
 
-    // Troll Button
     const treatBtn = document.getElementById('ttt-next');
     let escapes = 0;
     function moveButton(e) {
@@ -231,6 +230,7 @@
         }
     }
     treatBtn.addEventListener('touchstart', moveButton, {passive: false});
+    treatBtn.addEventListener('mouseover', moveButton);
     treatBtn.addEventListener('click', function() { if (escapes >= 3) { nextScreen('error'); } });
 </script>
 
