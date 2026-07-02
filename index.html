@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>For My Sister</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Poppins:wght@400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Poppins:wght@400;600&family=Courier+Prime&display=swap');
 
         body {
             margin: 0;
@@ -16,6 +16,7 @@
             align-items: center;
             height: 100vh;
             font-family: 'Poppins', sans-serif;
+            overflow: hidden;
         }
         .app-container {
             width: 100%;
@@ -47,24 +48,9 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        .text-maroon { 
-            color: #8b2c2c; 
-            letter-spacing: 2px; 
-            font-size: 0.75em; 
-            text-transform: uppercase; 
-            font-weight: 600;
-            margin-bottom: 10px; 
-        }
-        h1, h2, h3 { 
-            color: #d35400; 
-            margin: 10px 0; 
-            font-family: 'Playfair Display', serif; 
-        }
-        p { 
-            color: #555; 
-            line-height: 1.7; 
-            font-size: 0.9em; 
-        }
+        .text-maroon { color: #8b2c2c; letter-spacing: 2px; font-size: 0.75em; text-transform: uppercase; font-weight: 600; margin-bottom: 10px; }
+        h1, h2, h3 { color: #d35400; margin: 10px 0; font-family: 'Playfair Display', serif; }
+        p { color: #555; line-height: 1.7; font-size: 0.9em; }
         
         .card {
             background: #fff;
@@ -89,6 +75,7 @@
             margin-top: 25px;
             box-shadow: 0 5px 15px rgba(230, 126, 34, 0.3);
             transition: transform 0.2s;
+            position: relative;
         }
         .btn:active { transform: scale(0.95); }
         
@@ -111,134 +98,97 @@
 
         /* Tic Tac Toe */
         .board { 
-            display: grid; 
-            grid-template-columns: repeat(3, 70px); 
-            grid-gap: 10px; 
-            margin: 25px auto; 
-            background: #fff;
-            padding: 15px;
-            border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+            display: grid; grid-template-columns: repeat(3, 70px); grid-gap: 10px; 
+            margin: 25px auto; background: #fff; padding: 15px; border-radius: 15px; box-shadow: 0 8px 16px rgba(0,0,0,0.05);
         }
         .cell {
-            width: 70px; height: 70px; 
-            background-color: #fdf1f1;
+            width: 70px; height: 70px; background-color: #fdf1f1;
             display: flex; align-items: center; justify-content: center;
-            font-size: 2em; color: #d35400; cursor: pointer; 
-            border-radius: 12px; font-family: 'Playfair Display', serif;
-            transition: background 0.3s;
+            font-size: 2em; color: #d35400; cursor: pointer; border-radius: 12px; font-family: 'Playfair Display', serif;
         }
-        .cell:active { background-color: #f5dcdc; }
 
-        /* Graphics */
-        .graphic { position: absolute; width: 60px; z-index: 10; }
-        .graphic-shinchan { top: -30px; right: 10px; }
-        .graphic-kitty { bottom: -20px; left: -10px; width: 80px; }
+        /* Fake Error Screen */
+        #s-error {
+            background-color: #0c0c0c;
+            color: #ff3333;
+            font-family: 'Courier Prime', monospace;
+            text-align: left;
+            align-items: flex-start;
+            padding: 40px;
+        }
+        .error-title { font-size: 1.5em; font-weight: bold; margin-bottom: 20px; }
+        .error-log { color: #00ff00; font-size: 0.8em; margin-bottom: 30px; line-height: 1.5; }
+        .bypass-link {
+            color: #555; text-decoration: underline; font-size: 0.8em; cursor: pointer; align-self: center; margin-top: auto;
+        }
 
         .photo-placeholder {
-            width: 100%; height: 220px; background-color: #f4f4f4;
-            border-radius: 12px; margin: 15px 0; border: 2px dashed #ccc;
-            display: flex; align-items: center; justify-content: center;
-            color: #999; font-size: 0.75em; overflow: hidden;
-            position: relative;
+            width: 100%; height: 220px; background-color: #f4f4f4; border-radius: 12px; margin: 15px 0; border: 2px dashed #ccc;
+            display: flex; align-items: center; justify-content: center; color: #999; font-size: 0.75em; overflow: hidden;
         }
-        .photo-placeholder img { width: 100%; height: 100%; object-fit: cover; }
-
-        /* Audio Player */
-        .player-controls { 
-            display: flex; justify-content: center; gap: 25px; 
-            margin-top: 20px; align-items: center; 
-        }
-        .play-btn {
-            background-color: #fff; color: #d35400; border: none;
-            width: 50px; height: 50px; border-radius: 50%;
-            font-size: 1.2em; cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        .play-btn-main { background-color: #d35400; color: white; width: 60px; height: 60px; }
     </style>
 </head>
 <body>
 
 <div class="app-container">
 
-    <!-- Screen 1: Start -->
     <div id="s1" class="screen active" style="align-items: flex-end; justify-content: flex-end; padding-bottom: 80px;">
         <div class="chat-bubble">Heyy sis!</div>
         <div class="chat-bubble">Open this</div>
         <button class="btn" style="align-self: center; margin-top: 50px;" onclick="nextScreen(2)">Tap to Open</button>
     </div>
 
-    <!-- Screen 2: Intro -->
     <div id="s2" class="screen">
         <div class="card">
             <div class="text-maroon">✦ For My Lovely Sister ✦</div>
             <h2>Happy<br>Dear Sis</h2>
-            <p>You've always been my biggest supporter, my secret keeper, and my forever partner-in-crime. On this day, I just want you to know how lucky I am to have you as my sister.</p>
+            <p>You've always been my biggest supporter, my secret keeper, and my forever partner-in-crime.</p>
         </div>
         <button class="btn" onclick="nextScreen(3)">Continue</button>
     </div>
 
-    <!-- Screen 3: Tic Tac Toe -->
     <div id="s3" class="screen">
-        <div class="text-maroon">Fill in the blanks to get a chocolate ✦</div>
+        <div class="text-maroon">Fill in blanks for chocolate ✦</div>
         <div class="board" id="board"></div>
-        <p id="ttt-msg" style="color: #27ae60; font-weight: 600; font-size: 0.85em; opacity: 0; transition: opacity 0.5s;"></p>
-        <button class="btn" id="ttt-next" style="display:none; margin-top:10px;" onclick="nextScreen(4)">Claim Treat</button>
+        <p id="ttt-msg" style="color: #27ae60; font-weight: 600; font-size: 0.85em; opacity: 0;"></p>
+        <button class="btn" id="ttt-next" style="display:none; transition: transform 0.1s; margin-top: 20px;">Claim Treat</button>
     </div>
 
-    <!-- Screen 4: Letter -->
+    <div id="s-error" class="screen">
+        <div class="error-title">SYSTEM_FAILURE_404</div>
+        <div class="error-log">
+            > Initializing reward protocol...<br>
+            > Scanning inventory...<br>
+            > ERROR: Chocolate object not found.<br>
+            > CAUSE: Bhai already ate it.<br>
+            > STATUS: You get nothing.<br>
+            > SUGGESTION: Cry about it.
+        </div>
+        <div class="bypass-link" onclick="nextScreen(4)">[ Bypass Error & Read Letter ]</div>
+    </div>
+
     <div id="s4" class="screen">
-        <div class="card" style="margin-top: 30px;">
-            <img src="https://via.placeholder.com/100x100.png?text=Shinchan+Here" class="graphic graphic-shinchan" alt="Cartoon">
+        <div class="card">
             <div class="text-maroon">A Letter From Your Bhai ✦</div>
             <h2>Dear Sis 💖</h2>
-            <p>I just want to remind you how special you are to me. May your life shine as bright as your smile, and may chocolates always find their way to you!</p>
-            <div class="text-maroon" style="margin-top: 25px;">— With love, your brother 💌</div>
+            <p>I just want to remind you how special you are to me. May your life shine as bright as your smile!</p>
         </div>
         <button class="btn" onclick="nextScreen(5)">Next</button>
     </div>
 
-    <!-- Screen 5: Memories -->
     <div id="s5" class="screen">
         <div class="card">
             <div class="text-maroon">Our Precious Memories ✦</div>
-            <p style="font-size: 0.7em; margin: 0;">FROM: Bhai | TO: My Lovely Sister</p>
-            
-            <div class="photo-placeholder">
-                <img src="https://via.placeholder.com/300x400.png?text=Your+Chat+Photo+Here" alt="Memory">
-            </div>
-            
-            <img src="https://via.placeholder.com/100x100.png?text=Hello+Kitty" class="graphic graphic-kitty" alt="Cartoon">
-        </div>
-        <button class="btn" onclick="nextScreen(6)">Next</button>
-    </div>
-
-    <!-- Screen 6: Music Player -->
-    <div id="s6" class="screen">
-        <div class="text-maroon">A Few Songs For You 💖</div>
-        <div class="photo-placeholder" style="height: 220px; width: 220px; border-radius: 50%; border: 5px solid #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
-            <img src="https://via.placeholder.com/220.png?text=Music+Cover" alt="Music Cover">
-        </div>
-        <h2 style="margin-top: 30px;">Phoolo Ka Taaron Ka</h2>
-        <p style="margin: 0; color: #e67e22; font-weight: 600;">Pal Pal Har Pal</p>
-        
-        <div class="player-controls">
-            <button class="play-btn">⏮</button>
-            <button class="play-btn play-btn-main">▶</button>
-            <button class="play-btn">⏭</button>
+            <div class="photo-placeholder">Your Chat Photo Here</div>
         </div>
         <button class="btn" onclick="nextScreen(7)">Finish</button>
     </div>
 
-    <!-- Screen 7: Thank You -->
     <div id="s7" class="screen">
         <div class="card">
             <div class="text-maroon">✦ From Your Bhai, With Love ✦</div>
             <h2>Thank You</h2>
             <div class="text-maroon" style="font-size: 0.9em;">FOR ALWAYS BEING THERE ❤️</div>
-            <p>You make every small thing brighter and happier. I'm lucky to have you — thanks for being the sweetest part of my days.</p>
-            <p style="font-size: 0.6em; color: #aaa; margin-top: 30px;">made with ♥ chocolates & sparkles</p>
         </div>
     </div>
 
@@ -248,7 +198,8 @@
     // Navigation
     function nextScreen(id) {
         document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-        document.getElementById('s' + id).classList.add('active');
+        let target = (id === 'error') ? 's-error' : 's' + id;
+        document.getElementById(target).classList.add('active');
     }
 
     // Tic Tac Toe
@@ -286,6 +237,25 @@
         }
     }
     initGame();
+
+    // Troll Button Logic
+    const treatBtn = document.getElementById('ttt-next');
+    let escapes = 0;
+
+    treatBtn.addEventListener('touchstart', function(e) {
+        if (escapes < 3) {
+            e.preventDefault(); // Prevents the click
+            const randomX = Math.floor(Math.random() * 150) - 75; // Jump left/right
+            const randomY = Math.floor(Math.random() * -150) - 50; // Jump up
+            treatBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+            escapes++;
+        }
+    });
+
+    // When finally clicked (either desktop mouse or 4th touch)
+    treatBtn.addEventListener('click', function() {
+        nextScreen('error');
+    });
 </script>
 
 </body>
