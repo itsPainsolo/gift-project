@@ -49,8 +49,9 @@
         .btn:active { transform: scale(0.95); }
         
         .bday-container { position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 10px; }
-        .bday-bg-text { font-size: 3.8em; font-weight: 900; color: transparent; -webkit-text-stroke: 1px rgba(139, 44, 44, 0.15); line-height: 0.85; position: absolute; z-index: 1; text-transform: uppercase; }
-        .bday-fg-text { font-size: 3.2em; font-weight: 900; color: #7a2020; z-index: 2; position: relative; text-transform: uppercase; line-height: 1; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.05); }
+        /* Reduced font sizes to fit mobile screens */
+        .bday-bg-text { font-size: 3.0em; font-weight: 900; color: transparent; -webkit-text-stroke: 1px rgba(139, 44, 44, 0.15); line-height: 0.85; position: absolute; z-index: 1; text-transform: uppercase; }
+        .bday-fg-text { font-size: 2.4em; font-weight: 900; color: #7a2020; z-index: 2; position: relative; text-transform: uppercase; line-height: 1; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.05); }
         
         .ig-icons { display: flex; gap: 15px; margin-top: 15px; font-size: 1.4em; color: #333; justify-content: flex-start; }
         .ig-icons span:first-child { color: #e74c3c; } 
@@ -71,9 +72,6 @@
         .cell { width: 70px; height: 70px; background-color: #fdf1f1; display: flex; align-items: center; justify-content: center; font-size: 2em; color: #d35400; border-radius: 12px; font-family: 'Playfair Display', serif; cursor: pointer; }
         #s-error { background-color: #0c0c0c; color: #ff3333; font-family: 'Courier Prime', monospace; text-align: left; padding: 30px; justify-content: center; z-index: 999; }
         .bypass-link { color: #555; text-decoration: underline; cursor: pointer; align-self: center; margin-top: 30px; }
-
-        .btn-giant { padding: 20px 50px; font-size: 1.5em; background-color: #27ae60; width: 100%; margin-bottom: 20px; }
-        .btn-tiny { padding: 5px 15px; font-size: 0.7em; background-color: #7f8c8d; position: absolute; }
 
         .scrollable-letter { max-height: 45vh; overflow-y: auto; padding-right: 10px; margin-top: 15px; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
         .scrollable-letter::-webkit-scrollbar { width: 4px; }
@@ -97,17 +95,17 @@
         </div>
     </div>
 
-    <div id="s2" class="screen" style="justify-content: flex-start; padding-top: 50px;">
+    <div id="s2" class="screen" style="justify-content: flex-start; padding-top: 20px;">
         <div class="bday-container">
             <div class="bday-bg-text">BIRTHDAY<br>BIRTHDAY<br>BIRTHDAY<br>BIRTHDAY</div>
             <div class="bday-fg-text">HAPPY<br>BIRTHDAY</div>
         </div>
-        <div class="card" style="margin-top: 30px; padding: 15px;">
-            <img src="bear-cake.png" style="width: 100%; border-radius: 8px; background: #fdf4f6;" alt="Cake Sticker Placeholder">
+        <div class="card" style="margin-top: 15px; padding: 12px;">
+            <img src="bear-cake.png" style="width: 100%; border-radius: 8px; background: #fdf4f6;" alt="Cake Sticker">
             <div class="ig-icons"><span>❤️</span> <span>💬</span> <span>✈️</span></div>
-            <p style="text-align: left; margin: 15px 0 0 0; font-size: 0.85em;"><b>Bhai</b> Wishing you a day filled with love, laughter, and all the things that bring you joy.</p>
+            <p style="text-align: left; margin: 10px 0 0 0; font-size: 0.80em;"><b>Bhai</b> Wishing you a day filled with love, laughter, and all the things that bring you joy.</p>
         </div>
-        <button class="btn" onclick="nextScreen('warning')">Continue</button>
+        <button class="btn" style="margin-top: 15px;" onclick="nextScreen('warning')">Continue</button>
     </div>
 
     <div id="s-warning" class="screen">
@@ -138,14 +136,16 @@
 
     <div id="s-chess" class="screen">
         <img src="bear-smug.png" class="hero-sticker" alt="Smug Sticker" onerror="this.style.display='none'">
-        <div class="card" style="min-height: 300px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <div class="card" style="min-height: 280px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden;">
             <div class="text-maroon">Answer Honestly ✦</div>
-            <h2 style="color: #7a2020; margin-bottom: 40px;">Who plays better chess?</h2>
+            <h2 style="color: #7a2020; margin-bottom: 30px;">Who plays better chess?</h2>
             
-            <button class="btn btn-giant" onclick="triggerChessWin()">BHAI</button>
-            <button class="btn btn-tiny" id="btn-you">You</button>
+            <div style="position: relative; width: 100%; height: 60px; display: flex; justify-content: flex-start; align-items: center; padding-left: 20px;">
+                <button class="btn" style="background-color: #27ae60; font-size: 1.1em; padding: 15px 35px; margin: 0;" onclick="triggerChessWin()">BHAI</button>
+                <button class="btn" id="btn-you" style="background-color: #7f8c8d; font-size: 0.9em; padding: 10px 20px; margin: 0; position: absolute; right: 20px;">You</button>
+            </div>
             
-            <p id="chess-msg" style="color: #27ae60; font-weight: bold; font-size: 1em; opacity: 0; text-align: center; margin-top: 20px;"></p>
+            <p id="chess-msg" style="color: #27ae60; font-weight: bold; font-size: 0.9em; opacity: 0; text-align: center; margin-top: 20px; padding: 0 10px;"></p>
             <button class="btn" id="chess-next" style="display: none; padding: 10px 20px; font-size: 0.8em;" onclick="nextScreen(4)">Proceed</button>
         </div>
     </div>
@@ -155,7 +155,6 @@
         <div class="card">
             <img src="bear-reading.png" class="accent-sticker pos-top-right" alt="Small Sticker">
             <div class="text-maroon">A Letter From Your Bhai ✦</div>
-            
             <div class="scrollable-letter">
                 <p>Happy Birthday to the only person I can call a drama queen without getting canceled. Thanks for the endless laughs, ridiculous memories, and years of slightly traumatic sibling pranks. Life wouldn't be as fun (or weird) without you!</p>
                 <p>Ek to pta nahi 3 din se kha mar gyi behn ji, but happy birthdayy! May you get everything you want (just not an asteroid). Bde bhai se kon crush ki bat krta hai, just a joke 😂</p>
@@ -226,32 +225,26 @@
         let music = document.getElementById('bg-music');
         let vid = document.getElementById('my-video');
         
-        // Initial Music Start (Max Volume)
         if (id === 2) {
             music.volume = 1.0; 
-            music.play().catch(e => console.log("Audio play blocked by device settings"));
+            music.play().catch(e => console.log("Audio play blocked"));
         }
         
-        // Video Audio Switch Logic
         if (id === 'video') {
-            music.pause(); // Mute background song
+            music.pause(); 
             if (vid) {
                 vid.currentTime = 0;
                 vid.muted = false;
                 vid.play().catch(e => {
-                    console.log("Video auto-play blocked");
-                    // Failsafe: If iPhone blocks the auto-play, it adds play buttons so she can click it manually
                     vid.setAttribute("controls", "true"); 
                 });
             }
         } else if (id === 5) {
-            // Photo Gallery Audio Resume
             if (vid) { vid.pause(); } 
             music.play().catch(e => console.log("Audio play blocked")); 
         }
     }
 
-    // Emoji Rain Logic
     const emojis = ['🌸', '✨', '💕', '🎈'];
     const container = document.getElementById('app');
     setInterval(() => {
@@ -266,7 +259,6 @@
         }
     }, 400);
 
-    // Unbeatable Tic-Tac-Toe AI Logic
     let board = ['', '', '', '', '', '', '', '', ''];
     let currentPlayer = 'X';
     let gameActive = true; 
@@ -327,7 +319,6 @@
     }
     initGame();
 
-    // Troll Button Logic (Chocolate)
     const treatBtn = document.getElementById('ttt-next');
     let escapes = 0;
     function moveButton(e) {
@@ -341,12 +332,16 @@
     treatBtn.addEventListener('mouseover', moveButton);
     treatBtn.addEventListener('click', function() { if (escapes >= 3) { nextScreen('error'); } });
 
-    // Chess Prank Logic
     const btnYou = document.getElementById('btn-you');
     function evadeYouButton(e) {
         e.preventDefault();
-        const randomX = Math.floor(Math.random() * 200) - 100;
-        const randomY = Math.floor(Math.random() * 200) - 100;
+        const cardWidth = document.querySelector('#s-chess .card').offsetWidth;
+        const cardHeight = document.querySelector('#s-chess .card').offsetHeight;
+        
+        // Keeps the button contained strictly within the white card
+        const randomX = Math.floor(Math.random() * (cardWidth - 80)) - (cardWidth / 2) + 40;
+        const randomY = Math.floor(Math.random() * (cardHeight - 40)) - (cardHeight / 2) + 20;
+        
         btnYou.style.transform = `translate(${randomX}px, ${randomY}px)`;
     }
     btnYou.addEventListener('touchstart', evadeYouButton, {passive: false});
