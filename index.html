@@ -8,229 +8,210 @@
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Poppins:wght@400;600&family=Courier+Prime&display=swap');
 
         body {
-            margin: 0;
-            padding: 0;
-            background-color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-family: 'Poppins', sans-serif;
-            overflow: hidden;
+            margin: 0; padding: 0; 
+            /* Soft Pink Gradient Background */
+            background: linear-gradient(135deg, #fdf4f6 0%, #fadadd 100%);
+            display: flex; justify-content: center; align-items: center;
+            height: 100vh; font-family: 'Poppins', sans-serif; overflow: hidden;
         }
         .app-container {
-            width: 100%;
-            max-width: 400px;
-            height: 100vh;
-            max-height: 850px;
-            background-color: #fcf1ee;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 0 30px rgba(0,0,0,0.9);
-            border-radius: 8px;
+            width: 100%; max-width: 400px;
+            height: 100vh; height: 100dvh;
+            background-color: transparent;
+            position: relative; overflow: hidden;
+            box-shadow: 0 0 30px rgba(0,0,0,0.2);
         }
         .screen {
-            display: none;
-            width: 100%;
-            height: 100%;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 30px 20px;
-            box-sizing: border-box;
-            text-align: center;
+            display: none; width: 100%; height: 100%;
+            flex-direction: column; align-items: center; justify-content: center;
+            padding: 30px 20px; box-sizing: border-box; text-align: center;
             animation: slideUp 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative; z-index: 10;
         }
         .active { display: flex; }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         
         .text-maroon { color: #8b2c2c; letter-spacing: 2px; font-size: 0.75em; text-transform: uppercase; font-weight: 600; margin-bottom: 10px; }
         h1, h2, h3 { color: #d35400; margin: 10px 0; font-family: 'Playfair Display', serif; }
-        p { color: #555; line-height: 1.7; font-size: 0.9em; }
+        p { color: #555; line-height: 1.6; font-size: 0.9em; }
         
         .card {
-            background: #fff;
-            padding: 25px 20px;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            width: 100%;
-            box-sizing: border-box;
-            position: relative;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px 20px; border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(211, 84, 0, 0.1); width: 100%;
+            box-sizing: border-box; position: relative;
         }
 
         .btn {
-            padding: 14px 35px;
-            background-color: #e67e22;
-            color: #fff;
-            border: none;
-            border-radius: 30px;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 0.9em;
-            cursor: pointer;
-            margin-top: 25px;
-            box-shadow: 0 5px 15px rgba(230, 126, 34, 0.3);
-            transition: transform 0.2s;
-            position: relative;
+            padding: 14px 35px; background-color: #d35400; color: #fff;
+            border: none; border-radius: 30px; font-family: 'Poppins', sans-serif;
+            font-weight: 600; font-size: 0.9em; cursor: pointer; margin-top: 25px;
+            box-shadow: 0 5px 15px rgba(211, 84, 0, 0.3); transition: transform 0.2s;
+            position: relative; z-index: 100;
         }
         .btn:active { transform: scale(0.95); }
         
-        /* Chat Bubble Styles */
-        .chat-bubble {
-            background: #5a5eb9;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 20px;
-            border-bottom-right-radius: 4px;
-            margin: 5px 0;
-            max-width: 80%;
-            align-self: flex-end;
-            font-size: 0.95em;
-            box-shadow: 0 4px 10px rgba(90, 94, 185, 0.2);
-            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-        }
-        .chat-bubble:nth-child(2) { animation-delay: 0.3s; }
-        @keyframes popIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+        /* Graphics */
+        .hero-sticker { width: 140px; margin-bottom: -15px; z-index: 15; position: relative; }
+        .accent-sticker { position: absolute; width: 70px; z-index: 20; }
+        .pos-top-right { top: -30px; right: 10px; }
+        .pos-bottom-left { bottom: -20px; left: -10px; }
 
-        /* Tic Tac Toe */
+        /* Swipeable Photo Gallery */
+        .carousel {
+            display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+            gap: 15px; padding-bottom: 15px; margin-top: 15px;
+            -webkit-overflow-scrolling: touch;
+        }
+        .carousel::-webkit-scrollbar { display: none; }
+        .photo-slot {
+            scroll-snap-align: center; flex: 0 0 90%; height: 350px;
+            background-color: #f4f4f4; border-radius: 12px; border: 2px dashed #ccc;
+            display: flex; align-items: center; justify-content: center;
+            color: #999; font-size: 0.75em; overflow: hidden;
+        }
+        .photo-slot img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Falling Emojis */
+        .falling-emoji {
+            position: absolute; top: -50px; font-size: 24px;
+            pointer-events: none; z-index: 1;
+            animation: fall linear forwards;
+        }
+        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
+
+        /* Tic Tac Toe & Error */
         .board { 
             display: grid; grid-template-columns: repeat(3, 70px); grid-gap: 10px; 
-            margin: 25px auto; background: #fff; padding: 15px; border-radius: 15px; box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+            margin: 25px auto; background: #fff; padding: 15px; border-radius: 15px;
         }
         .cell {
             width: 70px; height: 70px; background-color: #fdf1f1;
             display: flex; align-items: center; justify-content: center;
-            font-size: 2em; color: #d35400; cursor: pointer; border-radius: 12px; font-family: 'Playfair Display', serif;
+            font-size: 2em; color: #d35400; border-radius: 12px; font-family: 'Playfair Display', serif;
         }
-
-        /* Fake Error Screen */
         #s-error {
-            background-color: #0c0c0c;
-            color: #ff3333;
-            font-family: 'Courier Prime', monospace;
-            text-align: left;
-            align-items: flex-start;
-            padding: 40px;
+            background-color: #0c0c0c; color: #ff3333; font-family: 'Courier Prime', monospace;
+            text-align: left; padding: 30px; justify-content: center; z-index: 999;
         }
-        .error-title { font-size: 1.5em; font-weight: bold; margin-bottom: 20px; }
-        .error-log { color: #00ff00; font-size: 0.8em; margin-bottom: 30px; line-height: 1.5; }
-        .bypass-link {
-            color: #555; text-decoration: underline; font-size: 0.8em; cursor: pointer; align-self: center; margin-top: auto;
-        }
-
-        .photo-placeholder {
-            width: 100%; height: 220px; background-color: #f4f4f4; border-radius: 12px; margin: 15px 0; border: 2px dashed #ccc;
-            display: flex; align-items: center; justify-content: center; color: #999; font-size: 0.75em; overflow: hidden;
-        }
+        .bypass-link { color: #555; text-decoration: underline; cursor: pointer; align-self: center; margin-top: 30px; }
     </style>
 </head>
 <body>
 
-<div class="app-container">
+<div class="app-container" id="app">
 
-    <div id="s1" class="screen active" style="align-items: flex-end; justify-content: flex-end; padding-bottom: 80px;">
-        <div class="chat-bubble">Heyy sis!</div>
-        <div class="chat-bubble">Open this</div>
-        <button class="btn" style="align-self: center; margin-top: 50px;" onclick="nextScreen(2)">Tap to Open</button>
+    <div id="s1" class="screen active">
+        <h2 style="color: #8b2c2c; font-family: 'Poppins', sans-serif;">Heyy sis!</h2>
+        <button class="btn" onclick="nextScreen(2)">Tap to Open</button>
     </div>
 
     <div id="s2" class="screen">
+        <img src="bear-cake.png" class="hero-sticker" alt="Cake Sticker">
         <div class="card">
             <div class="text-maroon">✦ For My Lovely Sister ✦</div>
-            <h2>Happy<br>Dear Sis</h2>
+            <h2>Happy Birthday</h2>
             <p>You've always been my biggest supporter, my secret keeper, and my forever partner-in-crime.</p>
         </div>
         <button class="btn" onclick="nextScreen(3)">Continue</button>
     </div>
 
     <div id="s3" class="screen">
-        <div class="text-maroon">Fill in blanks for chocolate ✦</div>
+        <div class="text-maroon">Win a chocolate ✦</div>
         <div class="board" id="board"></div>
         <p id="ttt-msg" style="color: #27ae60; font-weight: 600; font-size: 0.85em; opacity: 0;"></p>
         <button class="btn" id="ttt-next" style="display:none; transition: transform 0.1s; margin-top: 20px;">Claim Treat</button>
     </div>
 
     <div id="s-error" class="screen">
-        <div class="error-title">SYSTEM_FAILURE_404</div>
-        <div class="error-log">
-            > Initializing reward protocol...<br>
-            > Scanning inventory...<br>
-            > ERROR: Chocolate object not found.<br>
+        <div style="font-size: 1.5em; font-weight: bold; margin-bottom: 20px;">SYSTEM_FAILURE_404</div>
+        <div style="color: #00ff00; font-size: 0.8em; margin-bottom: 20px; line-height: 1.5;">
+            > Initializing reward...<br>
+            > ERROR: Chocolate not found.<br>
             > CAUSE: Bhai already ate it.<br>
-            > STATUS: You get nothing.<br>
-            > SUGGESTION: Cry about it.
+            > STATUS: You get nothing.
         </div>
         <div class="bypass-link" onclick="nextScreen(4)">[ Bypass Error & Read Letter ]</div>
     </div>
 
     <div id="s4" class="screen">
+        <img src="bear-kiss.png" class="hero-sticker" alt="Kiss Sticker">
         <div class="card">
+            <img src="bear-reading.png" class="accent-sticker pos-top-right" alt="Small Sticker">
             <div class="text-maroon">A Letter From Your Bhai ✦</div>
             <h2>Dear Sis 💖</h2>
-            <p>I just want to remind you how special you are to me. May your life shine as bright as your smile!</p>
+            <p>I just want to remind you how special you are to me. Even when I annoy you, you know I always have your back.</p>
         </div>
         <button class="btn" onclick="nextScreen(5)">Next</button>
     </div>
 
-    <div id="s5" class="screen">
-        <div class="card">
-            <div class="text-maroon">Our Precious Memories ✦</div>
-            <div class="photo-placeholder">Your Chat Photo Here</div>
+    <div id="s5" class="screen" style="padding: 10px;">
+        <img src="bear-hug.png" class="hero-sticker" style="width: 120px;" alt="Hug Sticker">
+        <div class="card" style="padding: 15px 10px;">
+            <div class="text-maroon">Swipe For Memories ✦</div>
+            <div class="carousel">
+                <div class="photo-slot">Upload photo1.jpg</div>
+                <div class="photo-slot">Upload photo2.jpg</div>
+                <div class="photo-slot">Upload photo3.jpg</div>
+                <div class="photo-slot">Upload photo4.jpg</div>
+            </div>
         </div>
-        <button class="btn" onclick="nextScreen(7)">Finish</button>
+        <button class="btn" onclick="nextScreen(6)">Finish</button>
     </div>
 
-    <div id="s7" class="screen">
+    <div id="s6" class="screen">
+        <img src="bear-blanket.png" class="hero-sticker" alt="Blanket Sticker">
         <div class="card">
             <div class="text-maroon">✦ From Your Bhai, With Love ✦</div>
             <h2>Thank You</h2>
             <div class="text-maroon" style="font-size: 0.9em;">FOR ALWAYS BEING THERE ❤️</div>
         </div>
     </div>
-
 </div>
 
 <script>
-    // Navigation
+    // Screen Navigation
     function nextScreen(id) {
         document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
         let target = (id === 'error') ? 's-error' : 's' + id;
         document.getElementById(target).classList.add('active');
     }
 
+    // Emoji Rain Logic (Optimized for Mobile)
+    const emojis = ['🌸', '✨', '💕'];
+    const container = document.getElementById('app');
+    setInterval(() => {
+        if(document.querySelectorAll('.falling-emoji').length < 15) {
+            const el = document.createElement('div');
+            el.className = 'falling-emoji';
+            el.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            el.style.left = Math.random() * 100 + 'vw';
+            el.style.animationDuration = (Math.random() * 3 + 4) + 's'; // 4s to 7s fall
+            container.appendChild(el);
+            setTimeout(() => el.remove(), 7000);
+        }
+    }, 500);
+
     // Tic Tac Toe
     let board = ['', '', '', '', '', '', '', '', ''];
     let currentPlayer = 'X';
     const boardEl = document.getElementById('board');
-    let gameActive = true;
-    let moves = 0;
-
+    let gameActive = true; let moves = 0;
     function initGame() {
         boardEl.innerHTML = '';
         board.forEach((cell, i) => {
             let div = document.createElement('div');
-            div.className = 'cell';
-            div.innerText = cell;
-            div.onclick = () => makeMove(i);
-            boardEl.appendChild(div);
+            div.className = 'cell'; div.innerText = cell;
+            div.onclick = () => makeMove(i); boardEl.appendChild(div);
         });
     }
-
     function makeMove(i) {
         if(board[i] === '' && gameActive) {
-            board[i] = currentPlayer;
-            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-            moves++;
-            initGame();
-            
+            board[i] = currentPlayer; currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; moves++; initGame();
             if(moves >= 5) {
-                let msg = document.getElementById('ttt-msg');
-                msg.innerText = "You successfully unlocked a chocolate treat, yay!";
-                msg.style.opacity = 1;
+                document.getElementById('ttt-msg').innerText = "Chocolate unlocked!";
+                document.getElementById('ttt-msg').style.opacity = 1;
                 document.getElementById('ttt-next').style.display = 'block';
                 gameActive = false;
             }
@@ -238,24 +219,19 @@
     }
     initGame();
 
-    // Troll Button Logic
+    // Troll Button
     const treatBtn = document.getElementById('ttt-next');
     let escapes = 0;
-
-    treatBtn.addEventListener('touchstart', function(e) {
+    function moveButton(e) {
         if (escapes < 3) {
-            e.preventDefault(); // Prevents the click
-            const randomX = Math.floor(Math.random() * 150) - 75; // Jump left/right
-            const randomY = Math.floor(Math.random() * -150) - 50; // Jump up
-            treatBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
-            escapes++;
+            e.preventDefault(); 
+            const randomX = Math.floor(Math.random() * 150) - 75;
+            const randomY = Math.floor(Math.random() * -120) - 40;
+            treatBtn.style.transform = `translate(${randomX}px, ${randomY}px)`; escapes++;
         }
-    });
-
-    // When finally clicked (either desktop mouse or 4th touch)
-    treatBtn.addEventListener('click', function() {
-        nextScreen('error');
-    });
+    }
+    treatBtn.addEventListener('touchstart', moveButton, {passive: false});
+    treatBtn.addEventListener('click', function() { if (escapes >= 3) { nextScreen('error'); } });
 </script>
 
 </body>
