@@ -31,7 +31,7 @@
         
         .text-maroon { color: #8b2c2c; letter-spacing: 2px; font-size: 0.75em; text-transform: uppercase; font-weight: 700; margin-bottom: 10px; }
         h2, h3 { color: #d35400; margin: 10px 0; font-family: 'Playfair Display', serif; }
-        p { color: #555; line-height: 1.6; font-size: 0.9em; }
+        p { color: #555; line-height: 1.6; font-size: 0.9em; text-align: left; }
         
         .card {
             background: rgba(255, 255, 255, 0.95); padding: 25px 20px; border-radius: 20px;
@@ -48,59 +48,53 @@
         }
         .btn:active { transform: scale(0.95); }
         
-        /* EXACT Birthday Template Typography */
         .bday-container { position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 10px; }
-        .bday-bg-text {
-            font-size: 3.8em; font-weight: 900; color: transparent;
-            -webkit-text-stroke: 1px rgba(139, 44, 44, 0.15); line-height: 0.85;
-            position: absolute; z-index: 1; text-transform: uppercase;
-        }
-        .bday-fg-text {
-            font-size: 3.2em; font-weight: 900; color: #7a2020;
-            z-index: 2; position: relative; text-transform: uppercase; line-height: 1;
-            margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
-        }
+        .bday-bg-text { font-size: 3.8em; font-weight: 900; color: transparent; -webkit-text-stroke: 1px rgba(139, 44, 44, 0.15); line-height: 0.85; position: absolute; z-index: 1; text-transform: uppercase; }
+        .bday-fg-text { font-size: 3.2em; font-weight: 900; color: #7a2020; z-index: 2; position: relative; text-transform: uppercase; line-height: 1; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.05); }
         
-        /* Instagram Style Icons */
         .ig-icons { display: flex; gap: 15px; margin-top: 15px; font-size: 1.4em; color: #333; justify-content: flex-start; }
-        .ig-icons span:first-child { color: #e74c3c; } /* Red Heart */
+        .ig-icons span:first-child { color: #e74c3c; } 
 
-        /* Graphics */
         .hero-sticker { width: 140px; margin-bottom: -15px; z-index: 15; position: relative; }
         .accent-sticker { position: absolute; width: 70px; z-index: 20; }
         .pos-top-right { top: -30px; right: 10px; }
 
-        /* Photo Gallery for 21 Images */
-        .carousel {
-            display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
-            gap: 15px; padding-bottom: 15px; margin-top: 15px; -webkit-overflow-scrolling: touch;
-        }
+        .carousel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 15px; padding-bottom: 15px; margin-top: 15px; -webkit-overflow-scrolling: touch; }
         .carousel::-webkit-scrollbar { display: none; }
-        .photo-slot {
-            scroll-snap-align: center; flex: 0 0 90%; height: 350px;
-            background-color: #f4f4f4; border-radius: 12px; border: 2px dashed #ccc;
-            display: flex; align-items: center; justify-content: center; color: #999; font-size: 0.75em; overflow: hidden;
-        }
-        .photo-slot img { width: 100%; height: 100%; object-fit: cover; }
+        .photo-slot { scroll-snap-align: center; flex: 0 0 90%; height: 350px; background-color: transparent; border-radius: 12px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .photo-slot img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.1)); }
 
-        /* Falling Emojis */
         .falling-emoji { position: absolute; top: -50px; font-size: 24px; pointer-events: none; z-index: 1; animation: fall linear forwards; }
         @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
 
-        /* Tic Tac Toe & Error */
-        .board { display: grid; grid-template-columns: repeat(3, 70px); grid-gap: 10px; margin: 25px auto; background: #fff; padding: 15px; border-radius: 15px; }
-        .cell { width: 70px; height: 70px; background-color: #fdf1f1; display: flex; align-items: center; justify-content: center; font-size: 2em; color: #d35400; border-radius: 12px; font-family: 'Playfair Display', serif; }
+        .board { display: grid; grid-template-columns: repeat(3, 70px); grid-gap: 10px; margin: 25px auto; background: #fff; padding: 15px; border-radius: 15px; box-shadow: 0 8px 16px rgba(0,0,0,0.05); }
+        .cell { width: 70px; height: 70px; background-color: #fdf1f1; display: flex; align-items: center; justify-content: center; font-size: 2em; color: #d35400; border-radius: 12px; font-family: 'Playfair Display', serif; cursor: pointer; }
         #s-error { background-color: #0c0c0c; color: #ff3333; font-family: 'Courier Prime', monospace; text-align: left; padding: 30px; justify-content: center; z-index: 999; }
         .bypass-link { color: #555; text-decoration: underline; cursor: pointer; align-self: center; margin-top: 30px; }
+
+        .btn-giant { padding: 20px 50px; font-size: 1.5em; background-color: #27ae60; width: 100%; margin-bottom: 20px; }
+        .btn-tiny { padding: 5px 15px; font-size: 0.7em; background-color: #7f8c8d; position: absolute; }
+
+        .scrollable-letter { max-height: 45vh; overflow-y: auto; padding-right: 10px; margin-top: 15px; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
+        .scrollable-letter::-webkit-scrollbar { width: 4px; }
+        .scrollable-letter::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
     </style>
 </head>
 <body>
 
+<audio id="bg-music" src="music.mp3" loop></audio>
+
 <div class="app-container" id="app">
 
     <div id="s1" class="screen active">
-        <h2 style="color: #7a2020; font-family: 'Poppins', sans-serif; font-weight: 900;">Heyy sis!</h2>
-        <button class="btn" onclick="nextScreen(2)">Tap to Open</button>
+        <div class="card" style="border: 2px dashed #8b2c2c; padding: 40px 20px; background: rgba(255, 255, 255, 0.98);">
+            <div class="text-maroon">✦ An Invitation ✦</div>
+            <h2 style="color: #7a2020; font-family: 'Playfair Display', serif; font-size: 2.2em; margin: 15px 0;">Heyy sis!</h2>
+            <p style="text-align: center; color: #666; font-size: 0.85em; font-style: italic; margin-bottom: 25px;">
+                Please take your time and don't rush through the pages. Turn your volume up, listen closely, and enjoy the moments.
+            </p>
+            <button class="btn" style="margin-top: 10px;" onclick="nextScreen(2)">Tap to Open</button>
+        </div>
     </div>
 
     <div id="s2" class="screen" style="justify-content: flex-start; padding-top: 50px;">
@@ -108,33 +102,52 @@
             <div class="bday-bg-text">BIRTHDAY<br>BIRTHDAY<br>BIRTHDAY<br>BIRTHDAY</div>
             <div class="bday-fg-text">HAPPY<br>BIRTHDAY</div>
         </div>
-        
         <div class="card" style="margin-top: 30px; padding: 15px;">
             <img src="bear-cake.png" style="width: 100%; border-radius: 8px; background: #fdf4f6;" alt="Cake Sticker Placeholder">
-            <div class="ig-icons">
-                <span>❤️</span> <span>💬</span> <span>✈️</span>
-            </div>
+            <div class="ig-icons"><span>❤️</span> <span>💬</span> <span>✈️</span></div>
             <p style="text-align: left; margin: 15px 0 0 0; font-size: 0.85em;"><b>Bhai</b> Wishing you a day filled with love, laughter, and all the things that bring you joy.</p>
         </div>
-        <button class="btn" onclick="nextScreen(3)">Continue</button>
+        <button class="btn" onclick="nextScreen('warning')">Continue</button>
+    </div>
+
+    <div id="s-warning" class="screen">
+        <div class="card" style="border: 2px solid #e67e22; background: #fffdf9;">
+            <div style="font-size: 2.5em; margin-bottom: 10px;">⚠️</div>
+            <h3 style="color: #d35400; margin-top: 0;">GAME PROTOCOL</h3>
+            <p style="text-align: center; font-weight: bold; color: #444; font-size: 0.95em; line-height: 1.6;">
+                Let the bhaiyya play his move. Wait until he plays his turn. Don't rush or the website can crash!
+            </p>
+        </div>
+        <button class="btn" style="background-color: #d35400;" onclick="nextScreen(3)">I Understand</button>
     </div>
 
     <div id="s3" class="screen">
-        <div class="text-maroon">Win a chocolate ✦</div>
+        <div class="text-maroon">Beat me for a chocolate ✦</div>
         <div class="board" id="board"></div>
-        <p id="ttt-msg" style="color: #27ae60; font-weight: 700; font-size: 0.85em; opacity: 0;"></p>
+        <p id="ttt-msg" style="font-weight: 700; font-size: 0.85em; opacity: 0; min-height: 20px; transition: opacity 0.3s;"></p>
         <button class="btn" id="ttt-next" style="display:none; transition: transform 0.1s; margin-top: 20px;">Claim Treat</button>
     </div>
 
     <div id="s-error" class="screen">
         <div style="font-size: 1.5em; font-weight: bold; margin-bottom: 20px;">SYSTEM_FAILURE_404</div>
         <div style="color: #00ff00; font-size: 0.8em; margin-bottom: 20px; line-height: 1.5;">
-            > Initializing reward...<br>
-            > ERROR: Chocolate not found.<br>
-            > CAUSE: Bhai already ate it.<br>
-            > STATUS: You get nothing.
+            > Initializing reward...<br>> ERROR: Chocolate not found.<br>> CAUSE: Bhai already ate it.<br>> STATUS: You get nothing.
         </div>
-        <div class="bypass-link" onclick="nextScreen(4)">[ Bypass Error & Read Letter ]</div>
+        <div class="bypass-link" onclick="nextScreen('chess')">[ Bypass Error ]</div>
+    </div>
+
+    <div id="s-chess" class="screen">
+        <img src="bear-smug.png" class="hero-sticker" alt="Smug Sticker" onerror="this.style.display='none'">
+        <div class="card" style="min-height: 300px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            <div class="text-maroon">Answer Honestly ✦</div>
+            <h2 style="color: #7a2020; margin-bottom: 40px;">Who plays better chess?</h2>
+            
+            <button class="btn btn-giant" onclick="triggerChessWin()">BHAI</button>
+            <button class="btn btn-tiny" id="btn-you">You</button>
+            
+            <p id="chess-msg" style="color: #27ae60; font-weight: bold; font-size: 1em; opacity: 0; text-align: center; margin-top: 20px;"></p>
+            <button class="btn" id="chess-next" style="display: none; padding: 10px 20px; font-size: 0.8em;" onclick="nextScreen(4)">Proceed</button>
+        </div>
     </div>
 
     <div id="s4" class="screen">
@@ -142,10 +155,25 @@
         <div class="card">
             <img src="bear-reading.png" class="accent-sticker pos-top-right" alt="Small Sticker">
             <div class="text-maroon">A Letter From Your Bhai ✦</div>
-            <h2 style="color: #7a2020;">Dear Sis 💖</h2>
-            <p>I just want to remind you how special you are to me. Even when I annoy you, you know I always have your back.</p>
+            
+            <div class="scrollable-letter">
+                <p>Happy Birthday to the only person I can call a drama queen without getting canceled. Thanks for the endless laughs, ridiculous memories, and years of slightly traumatic sibling pranks. Life wouldn't be as fun (or weird) without you!</p>
+                <p>Ek to pta nahi 3 din se kha mar gyi behn ji, but happy birthdayy! May you get everything you want (just not an asteroid). Bde bhai se kon crush ki bat krta hai, just a joke 😂</p>
+                <p>Yr kuch bhi kho tuhmari aadat si ho gyi hai, mja aata hai tuhmare sath. You're my comfort zone and the best thing that happened in the last 8-10 months.</p>
+                <p>Chlo ab serious vla happy birthdayyyyyyyyyy dobuu and my rosogolla. Gift ki chinta mat kro, mera jaisa gift kahi nhi milega so chilll.</p>
+                <p>Ehhhh serious hua hi nahi ja raha... dekho yr me jayda kuch nahi to kr skata pr yad rakhna tuhmara ye bhai jitna ho payega utna jarur karunga. I always got your back.</p>
+                <p>And ha, by always got your back I mean tuhmari to umar ho gyi hai, buddhi ho gyi ho. Tumne hi kha tha kabhi sir dard joki sir to nahi hai pr ghutno me jha tuhmara dimag hai... koi dwai vagera lani ho to abhi ham zinda hai... just a joke! Love you dobuuu ❤️</p>
+            </div>
         </div>
-        <button class="btn" onclick="nextScreen(5)">Next</button>
+        <button class="btn" onclick="nextScreen('video')">Next</button>
+    </div>
+
+    <div id="s-video" class="screen" style="padding: 10px;">
+        <div class="card" style="padding: 15px 10px; display: flex; flex-direction: column; align-items: center;">
+            <div class="text-maroon">Just for you ✦</div>
+            <video id="my-video" src="video.mp4" loop playsinline style="width: 100%; border-radius: 12px; border: 2px solid #fdf4f6; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 10px;"></video>
+        </div>
+        <button class="btn" onclick="nextScreen(5)">See Memories</button>
     </div>
 
     <div id="s5" class="screen" style="padding: 10px;">
@@ -192,8 +220,35 @@
 <script>
     function nextScreen(id) {
         document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-        let target = (id === 'error') ? 's-error' : 's' + id;
+        let target = (id === 'error') ? 's-error' : (id === 'chess') ? 's-chess' : (id === 'video') ? 's-video' : (id === 'warning') ? 's-warning' : 's' + id;
         document.getElementById(target).classList.add('active');
+        
+        let music = document.getElementById('bg-music');
+        let vid = document.getElementById('my-video');
+        
+        // Initial Music Start (Max Volume)
+        if (id === 2) {
+            music.volume = 1.0; 
+            music.play().catch(e => console.log("Audio play blocked by device settings"));
+        }
+        
+        // Video Audio Switch Logic
+        if (id === 'video') {
+            music.pause(); // Mute background song
+            if (vid) {
+                vid.currentTime = 0;
+                vid.muted = false;
+                vid.play().catch(e => {
+                    console.log("Video auto-play blocked");
+                    // Failsafe: If iPhone blocks the auto-play, it adds play buttons so she can click it manually
+                    vid.setAttribute("controls", "true"); 
+                });
+            }
+        } else if (id === 5) {
+            // Photo Gallery Audio Resume
+            if (vid) { vid.pause(); } 
+            music.play().catch(e => console.log("Audio play blocked")); 
+        }
     }
 
     // Emoji Rain Logic
@@ -211,12 +266,15 @@
         }
     }, 400);
 
-    // Tic Tac Toe Logic
+    // Unbeatable Tic-Tac-Toe AI Logic
     let board = ['', '', '', '', '', '', '', '', ''];
     let currentPlayer = 'X';
+    let gameActive = true; 
+    let losses = 0;
     const boardEl = document.getElementById('board');
-    let gameActive = true; let moves = 0;
-    
+    const msgEl = document.getElementById('ttt-msg');
+    const winCombos = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+
     function initGame() {
         boardEl.innerHTML = '';
         board.forEach((cell, i) => {
@@ -225,34 +283,83 @@
             div.onclick = () => makeMove(i); boardEl.appendChild(div);
         });
     }
-    
+
+    function checkWin(testBoard, player) { return winCombos.some(combo => combo.every(index => testBoard[index] === player)); }
+
     function makeMove(i) {
-        if(board[i] === '' && gameActive) {
-            board[i] = currentPlayer; currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; moves++; initGame();
-            if(moves >= 5) {
-                document.getElementById('ttt-msg').innerText = "Chocolate unlocked!";
-                document.getElementById('ttt-msg').style.opacity = 1;
-                document.getElementById('ttt-next').style.display = 'block';
-                gameActive = false;
-            }
+        if(board[i] === '' && gameActive && currentPlayer === 'X') {
+            board[i] = 'X'; initGame();
+            if(checkGameOver()) return;
+            currentPlayer = 'O'; setTimeout(aiMove, 400);
         }
+    }
+
+    function aiMove() {
+        if (!gameActive) return;
+        let emptySpots = board.map((val, idx) => val === '' ? idx : null).filter(val => val !== null);
+        let move = -1;
+        if (losses < 3) {
+            for (let i of emptySpots) { let temp = [...board]; temp[i] = 'O'; if (checkWin(temp, 'O')) { move = i; break; } }
+            if (move === -1) { for (let i of emptySpots) { let temp = [...board]; temp[i] = 'X'; if (checkWin(temp, 'X')) { move = i; break; } } }
+            if (move === -1 && board[4] === '') move = 4;
+            if (move === -1) move = emptySpots[Math.floor(Math.random() * emptySpots.length)];
+        } else {
+            move = emptySpots[Math.floor(Math.random() * emptySpots.length)];
+        }
+        board[move] = 'O'; currentPlayer = 'X'; initGame(); checkGameOver();
+    }
+
+    function checkGameOver() {
+        let xWins = checkWin(board, 'X'); let oWins = checkWin(board, 'O'); let isDraw = !board.includes('');
+        if (xWins) {
+            msgEl.innerText = "Okay fine, you win. Chocolate unlocked!";
+            msgEl.style.color = "#27ae60"; msgEl.style.opacity = 1;
+            document.getElementById('ttt-next').style.display = 'block'; gameActive = false; return true;
+        } else if (oWins || isDraw) {
+            gameActive = false; losses++; msgEl.style.color = "#d35400"; msgEl.style.opacity = 1;
+            if (losses === 1) msgEl.innerText = "Lol nice try! Bhai wins. Try again.";
+            else if (losses === 2) msgEl.innerText = "Still losing? Come on 😂 Try again.";
+            else if (losses === 3) msgEl.innerText = "Okay okay, I'll go easy on you now...";
+            setTimeout(() => { board = ['', '', '', '', '', '', '', '', '']; currentPlayer = 'X'; gameActive = true; msgEl.style.opacity = 0; initGame(); }, 2500);
+            return true;
+        }
+        return false;
     }
     initGame();
 
-    // Troll Button Logic
+    // Troll Button Logic (Chocolate)
     const treatBtn = document.getElementById('ttt-next');
     let escapes = 0;
     function moveButton(e) {
         if (escapes < 3) {
             e.preventDefault(); 
-            const randomX = Math.floor(Math.random() * 150) - 75;
-            const randomY = Math.floor(Math.random() * -120) - 40;
+            const randomX = Math.floor(Math.random() * 150) - 75; const randomY = Math.floor(Math.random() * -120) - 40;
             treatBtn.style.transform = `translate(${randomX}px, ${randomY}px)`; escapes++;
         }
     }
     treatBtn.addEventListener('touchstart', moveButton, {passive: false});
     treatBtn.addEventListener('mouseover', moveButton);
     treatBtn.addEventListener('click', function() { if (escapes >= 3) { nextScreen('error'); } });
+
+    // Chess Prank Logic
+    const btnYou = document.getElementById('btn-you');
+    function evadeYouButton(e) {
+        e.preventDefault();
+        const randomX = Math.floor(Math.random() * 200) - 100;
+        const randomY = Math.floor(Math.random() * 200) - 100;
+        btnYou.style.transform = `translate(${randomX}px, ${randomY}px)`;
+    }
+    btnYou.addEventListener('touchstart', evadeYouButton, {passive: false});
+    btnYou.addEventListener('mouseover', evadeYouButton);
+    btnYou.addEventListener('click', evadeYouButton);
+
+    function triggerChessWin() {
+        const msg = document.getElementById('chess-msg');
+        msg.innerText = "Arre I know I play better than you, thanks for accepting it! 😎";
+        msg.style.opacity = 1;
+        document.getElementById('chess-next').style.display = 'block';
+        btnYou.style.display = 'none'; 
+    }
 </script>
 
 </body>
