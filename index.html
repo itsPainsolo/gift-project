@@ -49,7 +49,6 @@
         .btn:active { transform: scale(0.95); }
         
         .bday-container { position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 10px; }
-        /* Reduced font sizes to fit mobile screens */
         .bday-bg-text { font-size: 3.0em; font-weight: 900; color: transparent; -webkit-text-stroke: 1px rgba(139, 44, 44, 0.15); line-height: 0.85; position: absolute; z-index: 1; text-transform: uppercase; }
         .bday-fg-text { font-size: 2.4em; font-weight: 900; color: #7a2020; z-index: 2; position: relative; text-transform: uppercase; line-height: 1; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.05); }
         
@@ -84,17 +83,20 @@
 
 <div class="app-container" id="app">
 
+    <!-- Screen 1: Upgraded Entrance with 20-Click Prank -->
     <div id="s1" class="screen active">
-        <div class="card" style="border: 2px dashed #8b2c2c; padding: 40px 20px; background: rgba(255, 255, 255, 0.98);">
-            <div class="text-maroon">✦ An Invitation ✦</div>
-            <h2 style="color: #7a2020; font-family: 'Playfair Display', serif; font-size: 2.2em; margin: 15px 0;">Heyy sis!</h2>
-            <p style="text-align: center; color: #666; font-size: 0.85em; font-style: italic; margin-bottom: 25px;">
-                Please take your time and don't rush through the pages. Turn your volume up, listen closely, and enjoy the moments.
+        <div class="card" id="s1-card" style="border: 2px dashed #8b2c2c; padding: 40px 20px; background: rgba(255, 255, 255, 0.98); min-height: 350px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden;">
+            <div class="text-maroon">✦ The Online Sibling ✦</div>
+            <h2 style="color: #7a2020; font-family: 'Playfair Display', serif; font-size: 1.8em; margin: 15px 0;">Happy Birthdayyy!</h2>
+            <p style="text-align: center; color: #666; font-size: 0.9em; font-style: italic; margin-bottom: 15px;">
+                To the best online sister! You are looking absolute <b>georgios</b> today! (spelling ki chinta mat kro feelings smjho 😂)
             </p>
-            <button class="btn" style="margin-top: 10px;" onclick="nextScreen(2)">Tap to Open</button>
+            <p id="s1-msg" style="color: #e74c3c; font-weight: bold; font-size: 0.85em; height: 20px; margin: 0;"></p>
+            <button class="btn" id="start-btn" style="margin-top: 15px; position: relative; z-index: 50;">Tap to Open</button>
         </div>
     </div>
 
+    <!-- Screen 2: Birthday Intro -->
     <div id="s2" class="screen" style="justify-content: flex-start; padding-top: 20px;">
         <div class="bday-container">
             <div class="bday-bg-text">BIRTHDAY<br>BIRTHDAY<br>BIRTHDAY<br>BIRTHDAY</div>
@@ -108,6 +110,7 @@
         <button class="btn" style="margin-top: 15px;" onclick="nextScreen('warning')">Continue</button>
     </div>
 
+    <!-- Screen Warning -->
     <div id="s-warning" class="screen">
         <div class="card" style="border: 2px solid #e67e22; background: #fffdf9;">
             <div style="font-size: 2.5em; margin-bottom: 10px;">⚠️</div>
@@ -119,6 +122,7 @@
         <button class="btn" style="background-color: #d35400;" onclick="nextScreen(3)">I Understand</button>
     </div>
 
+    <!-- Screen 3: Tic Tac Toe -->
     <div id="s3" class="screen">
         <div class="text-maroon">Beat me for a chocolate ✦</div>
         <div class="board" id="board"></div>
@@ -126,6 +130,7 @@
         <button class="btn" id="ttt-next" style="display:none; transition: transform 0.1s; margin-top: 20px;">Claim Treat</button>
     </div>
 
+    <!-- Troll Error Screen -->
     <div id="s-error" class="screen">
         <div style="font-size: 1.5em; font-weight: bold; margin-bottom: 20px;">SYSTEM_FAILURE_404</div>
         <div style="color: #00ff00; font-size: 0.8em; margin-bottom: 20px; line-height: 1.5;">
@@ -134,6 +139,7 @@
         <div class="bypass-link" onclick="nextScreen('chess')">[ Bypass Error ]</div>
     </div>
 
+    <!-- Screen 4: Chess Prank -->
     <div id="s-chess" class="screen">
         <img src="bear-smug.png" class="hero-sticker" alt="Smug Sticker" onerror="this.style.display='none'">
         <div class="card" style="min-height: 280px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden;">
@@ -150,6 +156,7 @@
         </div>
     </div>
 
+    <!-- Screen 5: Letter -->
     <div id="s4" class="screen">
         <img src="bear-kiss.png" class="hero-sticker" alt="Kiss Sticker">
         <div class="card">
@@ -167,14 +174,16 @@
         <button class="btn" onclick="nextScreen('video')">Next</button>
     </div>
 
+    <!-- Screen 5.5: Video -->
     <div id="s-video" class="screen" style="padding: 10px;">
         <div class="card" style="padding: 15px 10px; display: flex; flex-direction: column; align-items: center;">
             <div class="text-maroon">Just for you ✦</div>
-            <video id="my-video" src="video.mp4" loop playsinline style="width: 100%; border-radius: 12px; border: 2px solid #fdf4f6; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 10px;"></video>
+            <video id="my-video" src="video.mp4" loop playsinline style="max-width: 100%; max-height: 45vh; border-radius: 12px; border: 2px solid #fdf4f6; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 10px;"></video>
         </div>
         <button class="btn" onclick="nextScreen(5)">See Memories</button>
     </div>
 
+    <!-- Screen 6: Memories -->
     <div id="s5" class="screen" style="padding: 10px;">
         <img src="bear-hug.png" class="hero-sticker" style="width: 120px;" alt="Hug Sticker">
         <div class="card" style="padding: 15px 10px;">
@@ -206,6 +215,7 @@
         <button class="btn" onclick="nextScreen(6)">Finish</button>
     </div>
 
+    <!-- Screen 7: Thank You -->
     <div id="s6" class="screen">
         <img src="bear-blanket.png" class="hero-sticker" alt="Blanket Sticker">
         <div class="card">
@@ -245,6 +255,46 @@
         }
     }
 
+    // Screen 1: 20-Click Evasion Logic
+    const startBtn = document.getElementById('start-btn');
+    const startMsg = document.getElementById('s1-msg');
+    let startEscapes = 0;
+
+    function moveStartBtn(e) {
+        if (startEscapes < 19) {
+            e.preventDefault(); 
+            const cardWidth = document.querySelector('#s1-card').offsetWidth;
+            const cardHeight = document.querySelector('#s1-card').offsetHeight;
+            
+            // Constrains the button within the specific white card boundaries
+            const randomX = Math.floor(Math.random() * (cardWidth - 140)) - (cardWidth / 2) + 70;
+            const randomY = Math.floor(Math.random() * (cardHeight - 60)) - (cardHeight / 2) + 30;
+            
+            startBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+            startEscapes++;
+            
+            // Custom messages at specific intervals
+            if (startEscapes === 3 || startEscapes === 8 || startEscapes === 13) {
+                startMsg.innerText = "kya hua nahi dab rhaha 😂";
+            } else if (startEscapes === 17) {
+                startMsg.innerText = "yelo ab daba llo";
+            } else if (startEscapes === 18) {
+                startMsg.innerText = "iss bae seriosukyl";
+            } else if (startEscapes === 19) {
+                startMsg.innerText = "ok oky ye lo daba lo";
+                startBtn.style.transform = `translate(0px, 0px)`; // Button snaps back to center and unlocks
+            }
+        }
+    }
+    
+    startBtn.addEventListener('touchstart', moveStartBtn, {passive: false});
+    startBtn.addEventListener('mouseover', moveStartBtn);
+    startBtn.addEventListener('click', function(e) { 
+        if (startEscapes < 19) { e.preventDefault(); } 
+        else { nextScreen(2); } 
+    });
+
+    // Emoji Rain Logic
     const emojis = ['🌸', '✨', '💕', '🎈'];
     const container = document.getElementById('app');
     setInterval(() => {
@@ -259,6 +309,7 @@
         }
     }, 400);
 
+    // Unbeatable Tic-Tac-Toe AI Logic
     let board = ['', '', '', '', '', '', '', '', ''];
     let currentPlayer = 'X';
     let gameActive = true; 
@@ -319,26 +370,27 @@
     }
     initGame();
 
+    // Troll Button Logic (Chocolate)
     const treatBtn = document.getElementById('ttt-next');
     let escapes = 0;
-    function moveButton(e) {
+    function moveChocolateButton(e) {
         if (escapes < 3) {
             e.preventDefault(); 
             const randomX = Math.floor(Math.random() * 150) - 75; const randomY = Math.floor(Math.random() * -120) - 40;
             treatBtn.style.transform = `translate(${randomX}px, ${randomY}px)`; escapes++;
         }
     }
-    treatBtn.addEventListener('touchstart', moveButton, {passive: false});
-    treatBtn.addEventListener('mouseover', moveButton);
+    treatBtn.addEventListener('touchstart', moveChocolateButton, {passive: false});
+    treatBtn.addEventListener('mouseover', moveChocolateButton);
     treatBtn.addEventListener('click', function() { if (escapes >= 3) { nextScreen('error'); } });
 
+    // Chess Prank Logic
     const btnYou = document.getElementById('btn-you');
     function evadeYouButton(e) {
         e.preventDefault();
         const cardWidth = document.querySelector('#s-chess .card').offsetWidth;
         const cardHeight = document.querySelector('#s-chess .card').offsetHeight;
         
-        // Keeps the button contained strictly within the white card
         const randomX = Math.floor(Math.random() * (cardWidth - 80)) - (cardWidth / 2) + 40;
         const randomY = Math.floor(Math.random() * (cardHeight - 40)) - (cardHeight / 2) + 20;
         
